@@ -7,15 +7,18 @@ public class StepTracker {
             System.out.println("Введено отрицательное значение. Пожалуйста введите положительное значение.");
         } else {
             monthData[month - 1][day - 1] = steps;
-            System.out.println(steps + "- Шаги," + day + "- Дни," + month + "- Месяца.");
+            System.out.printf("%d- Шаги, %d- Дни, %d- Месяца.", steps, day, month);
         }
     }
 
-   public void countOfSteps(int month) {
+
+    public void countOfSteps(int month) {
         for (int i = 0; i < monthData[month - 1].length - 1; i++) {
-            System.out.print((i + 1) + " день: " + monthData[month - 1][i] + ", ");
+
+            System.out.printf("%d день: %d, ", (i + 1), monthData[month - 1][i]);
+
         }
-        System.out.print(monthData[month - 1].length + " день: " + monthData[month - 1][monthData[month - 1].length - 1]);
+        System.out.printf("%d день: %d \n", monthData[month - 1].length, monthData[month - 1][monthData[month - 1].length - 1]);
     }
 
     public int stepsSum(int month) {
@@ -26,7 +29,7 @@ public class StepTracker {
         return stepsSum;
     }
 
-   public int stepsMax(int month) {
+    public int stepsMax(int month) {
         int stepsMax = 0;
         for (int i = 0; i < monthData[month - 1].length; i++) {
             if (monthData[month - 1][i] > stepsMax) {
@@ -36,7 +39,7 @@ public class StepTracker {
         return stepsMax;
     }
 
-     public double stepsMiddle(int month) {
+    public double stepsMiddle(int month) {
         double sumStepsDouble = stepsSum(month);
         double monthToDataLengthDouble = monthData[month - 1].length;
         return sumStepsDouble / monthToDataLengthDouble;
@@ -63,7 +66,7 @@ public class StepTracker {
             System.out.println("Введите положительное число.");
         } else {
             stepGoal = goalStepsNew;
-            System.out.println("Новая цель по количеству шагов в день: " + stepGoal + " шагов");
+            System.out.printf("Новая цель по количеству шагов в день: %d шагов", stepGoal);
         }
     }
 }

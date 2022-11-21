@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 
-
-
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -35,33 +33,42 @@ public class Main {
                 int month = scanner.nextInt();
                 if (month < 1 | month > 12) {
                     System.out.println("Неверно введенный месяц.");
-                }
-                else {
-                    System.out.println("Количество пройденных шагов за " + month + "-й месяц: ");
+                } else {
+                    System.out.printf("Количество пройденных шагов за %d-й месяц: ", month);
                     stepTracker.countOfSteps(month);
 
-                    System.out.println("Общее количество шагов за " + month + "-й месяц: " + stepTracker.stepsSum(month) + " шагов");
+                    System.out.printf("Общее количество шагов за %d-й месяц: %d шагов \n",
+                            month, stepTracker.stepsSum(month));
 
-                    System.out.println("Максимальное пройденное количество шагов за " + month + "-й месяц: " + stepTracker.stepsMax(month) + " шагов");
+                    System.out.printf("Максимальное пройденное количество шагов за %d-й месяц: %d шагов \n",
+                            month, stepTracker.stepsMax(month));
 
-                    System.out.println("Среднее количество шагов за " + month + "-й месяц: " + stepTracker.stepsMiddle(month) + " шагов");
+                    System.out.printf("Среднее количество шагов за %d-й месяц: %.2f шагов \n",
+                            month, stepTracker.stepsMiddle(month));
 
-                    System.out.println("Пройденная дистанция за " + month + "-й месяц: " + converter.stepsInKL(stepTracker.stepsSum(month)) + " км");
+                    System.out.printf("Пройденная дистанция за %d-й месяц: %.2f км \n",
+                            month, converter.stepsInKL(stepTracker.stepsSum(month)));
 
-                    System.out.println("Количество сожжённых килокалорий за " + month + "-й месяц: " + converter.allCalories(stepTracker.stepsSum(month)) + " киллокалорий");
+                    System.out.printf("Количество сожжённых килокалорий за %d-й месяц: %.2f киллокалорий \n",
+                            month, converter.allCalories(stepTracker.stepsSum(month)));
 
-                    System.out.println("Лучшая серия: максимальное количество подряд идущих дней, " +
-                            "в течение которых количество шагов за день было равно или выше целевого: "
-                            + stepTracker.stepsSeries(month) + " подряд");
+                    System.out.printf("Лучшая серия: максимальное количество подряд идущих дней, " +
+                            "в течение которых количество шагов за день было равно или выше целевого: %d подряд \n",
+                            stepTracker.stepsSeries(month));
                 }
             } else if (command == 3) {
                 System.out.println("Введите требуемое количество шагов");
+
                 int targetStepsCount = scanner.nextInt();
+
                 stepTracker.goalSteps(targetStepsCount);
+
             } else if (command == 0) {
                 break;
             } else {
+
                 System.out.println("Извините, такой команды нет.");
+
             }
         }
     }
